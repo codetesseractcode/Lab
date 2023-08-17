@@ -1,0 +1,77 @@
+#include"stdio.h"
+#pragma pack(1)
+struct employee{
+		
+	char name[10];
+	char designation[10];
+	int basic_salary;
+	int hra;
+	int da;
+};
+int basicsal(int,int,int);
+main()
+{
+	int i,n;
+	
+	printf("Enter no.of employees: ");
+	scanf("%d",&n);
+
+	printf("\n");
+	
+	struct employee m[n];
+	int x[n];
+
+	for(i=0;i<n;i++)
+	{
+		x[i]=0;
+		printf("Enter employee %d information: \n",i+1);
+	
+		printf("Enter name: ");
+		scanf("%s",m[i].name);
+		
+		printf("Enter designation: ");
+		scanf("%s",m[i].designation);
+
+		printf("Enter basic salary: ");
+		scanf("%d",&m[i].basic_salary);
+
+		printf("Enter HRA%: ");
+		scanf("%d",&m[i].hra);
+
+		printf("Enter DA%: ");
+		scanf("%d",&m[i].da);
+	
+		x[i]=basicsal(m[i].basic_salary,m[i].hra,m[i].da);
+
+		printf("\n");
+
+	}
+	
+		
+	printf("Employee Information: \n");
+
+	for(i=0;i<n;i++)
+	{
+		printf("Name:%s\n",m[i].name);
+		
+		printf("Designation:%s\n",m[i].designation);
+
+		printf("Basic salary:%d:\n",m[i].basic_salary);
+
+		printf("HRA%:%d\n",m[i].hra);
+
+		printf("DA%:%d\n",m[i].da);
+	
+		printf("Gross Salary:%d\n",x[i]);
+		
+		printf("\n");
+	}
+	
+}
+int basicsal(int a,int b,int c)
+{
+	int sum=0;
+	sum=(b*a)/100+(c*a)/100;
+	sum=sum+a;
+	return sum;
+}
