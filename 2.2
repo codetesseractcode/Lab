@@ -1,0 +1,122 @@
+#include"stdio.h"
+#include"math.h"
+int nonzero(int [][10]);
+void uppertriangle(int [][10]);
+void diagonal(int [][10]);
+int n;
+main()
+{
+	int i,j,p;
+	
+	printf("Enter the size of the square matrix: ");
+	scanf("%d",&n);
+
+	int x[n][n];
+
+	printf("Enter elements of %d*%d matrix: \n",n,n);
+	for(i=0;i<n;i++)
+	{
+		for(j=0;j<n;j++)
+		{
+			scanf("%d",&x[i][j]);
+		}
+	}
+
+	p=nonzero(x);
+
+	printf("Nonzero elements:%d",p);
+
+	printf("\n");
+	
+	int y[n][n];		
+	for(i=0;i<n;i++)
+	{
+		for(j=0;j<n;j++)
+		{
+			y[i][j]=x[i][j];
+		}
+	}
+
+	uppertriangle(x);
+
+	printf("\n");	
+	
+	for(i=0;i<n;i++)
+	{
+		for(j=0;j<n;j++)
+		{
+			if(x[i][j]==0)
+			{
+				printf("  ");
+			}
+			else
+				printf("%d ",x[i][j]);
+		}
+		printf("\n");
+	}
+	
+	diagonal(y);
+	
+	printf("\n");	
+
+	for(i=0;i<n;i++)
+	{
+		for(j=0;j<n;j++)
+		{
+			if(i == j)
+			{
+				printf("  ");
+			}
+			else
+				printf("%d ",y[i][j]);
+		}
+		printf("\n");
+	}
+}
+int nonzero(int x[n][n])
+{
+	int i,j,count=0;
+
+	for(i=0;i<n;i++)
+	{
+		for(j=0;j<n;j++)
+		{
+			if(x[i][j]==0)
+				count++;
+		}
+	}
+	count = pow(n,2) - count;
+	return count;	
+}
+void uppertriangle(int x[n][n])
+{
+	int i,j;
+
+	for(i=0;i<n;i++)
+	{
+		for(j=0;j<n;j++)
+		{
+			if(i>=j)
+			{
+				x[i][j]=0;	
+			}
+		}
+	}
+}
+void diagonal(int x[n][n])
+{
+	
+	int i,j;
+
+	for(i=0;i<n;i++)
+	{
+		for(j=0;j<n;j++)
+		{
+			if(i==j)
+			{
+				x[i][j]=0;	
+			}
+		}
+	}
+}
+
