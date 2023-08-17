@@ -1,0 +1,144 @@
+#include"stdio.h"
+int insert(int [],int,int,int);
+int delete(int [],int,int);
+int linearsearch(int [],int,int);
+void traverse(int [],int);
+int x[1000];
+main()
+{
+	int i,j,n,num,pos,z,q;
+
+	printf("Enter size n: ");
+	scanf("%d",&n);
+	
+	printf("Enter Array elements: ");
+	
+	int x[n];
+	for(i=0;i<n;i++)
+	{
+		scanf("%d",&x[i]);
+	}
+
+	do{
+		printf("\n");
+		printf("***MENU***\n");
+		printf("1. Insert\n");
+		printf("2. Delete\n");
+		printf("3. Linear Search\n");
+		printf("4. Traverse\n");
+		printf("5. Exit\n");
+		
+		printf("Enter option: ");
+		scanf("%d",&j);
+	
+		if(j == 1)
+		{
+			printf("Enter element: ");
+			scanf("%d",&num);
+			
+			printf("Enter position(1~%d): ",n);
+			scanf("%d",&pos);
+			
+
+			z=insert(x,n,num,pos);
+	
+			if(z == 0)
+			{
+				printf("Element not inserted\n");
+			}
+			else
+			{	
+				n++;
+				printf("Element inserted\n");
+			}
+		}
+		else if(j == 2)
+		{	
+			printf("Enter position(1~%d): ",n);
+			scanf("%d",&pos);
+			
+
+			z=delete(x,n,pos);
+	
+			if(z == 0)
+			{
+				printf("Element not deleted\n");
+			}
+			else
+			{	
+				n--;
+				printf("Element deleted\n");
+			}
+		}
+		else if(j == 3)
+		{
+			printf("Enter element to search: ");
+			scanf("%d",&q);
+			
+			z=linearsearch(x,n,q);
+			
+			if(z == 0)
+				printf("Found");
+			else
+				printf("Not Found");
+		}
+		else if(j == 4)
+		{
+			traverse(x,n);
+		}
+		
+		printf("\n");
+	}while(j!=5);
+}
+int insert(int x[],int n,int num,int pos)
+{
+	int i;
+	if(pos < 0 || pos > n+1)
+	{
+		printf("Invalid Position\n");
+		return 0;
+	}
+	else
+	{
+		for(i=n-1;i>=pos-1;i--)
+		{
+			x[i+1]=x[i];
+		}
+		x[pos-1]=num;
+	}
+}
+int delete(int x[],int n,int pos)
+{
+	int i;
+	if(pos < 0 || pos > n+1)
+	{
+		printf("Invalid Position\n");
+		return 0;
+	}
+	else
+	{
+		for(i=pos-1;i<=n-1;i++)
+		{
+			x[i]=x[i+1];
+		}
+	}
+}
+int linearsearch(int x[],int n,int q)
+{
+	int i;
+	for(i=0;i<n;i++)
+	{
+		if( q == x[i])
+		{
+			return 0;
+		}
+	}
+}
+void traverse(int x[],int n)
+{
+	int i;
+	for(i=0;i<n;i++)
+	{
+		printf("%d ",x[i]);
+	}	
+}
