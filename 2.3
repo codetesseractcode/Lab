@@ -1,0 +1,33 @@
+#include"stdio.h"
+main()
+{
+	int i,j,r,c;
+	
+	printf("Enter size of the sparse matrix: ");
+	scanf("%d %d",&r,&c);
+	
+	int x[r][c];
+	printf("Enter element of sparse matrix: ");
+	for(i=0;i<r;i++)
+	{
+		for(j=0;j<c;j++)
+			scanf("%d",&x[i][j]);
+	}
+
+	printf("Sparse matrix in 3-tuple format: \n");	
+	for(i=0;i<r;i++)
+	{
+		for(j=0;j<c;j++)
+		{
+			if(x[i][j]==0)
+			{
+				continue;
+			}
+			else if(x[i][j]!=0)
+			{
+					printf("%d %d %d",i,j,x[i][j]);
+			}
+		}
+		printf("\n");
+	}	
+}
